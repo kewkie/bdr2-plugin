@@ -1,0 +1,14 @@
+{
+  "name": "bdr2",
+  "owner": {
+    "name": "BDR²",
+    "url": "https://bdr2.com"
+  },
+  "plugins": [
+    {
+      "name": "bdr2",
+      "source": "./",
+      "description": "BDR² lead-generation workflows for Claude Code. Bundles the BDR² MCP server with an orchestration skill that teaches Claude how to chain the low-level tools into real workflows."
+    }
+  ]
+}
