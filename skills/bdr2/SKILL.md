@@ -119,7 +119,7 @@ Ask the user about outcomes, then wire up the machinery behind the scenes. **Don
 3. From "sender and message": `create_email_config(..., lead_list_id=list_id)`. Or reuse via `list_email_configs` + `assign_email_config_to_list`.
 4. From "target company shape": turn each fit signal into a criterion.
    - `get_qualifiers` to see what's already on the account (criteria are account-level and reusable).
-   - `create_qualifier(short_name, question)` for anything new.
+   - `create_qualifier(short_name, question, list_id=list_id)` for anything new (attaches it to the list in one call).
    - `set_icq(list_id, qualifiers=[{qualifier_id, desired_state: {undetermined, true, false}}])`. All three boolean keys are required; `unevaluated` is **not** valid.
 5. From "starter leads": `add_lead(list_id, company_url, ...)` per example. If none provided, `find_new_leads(list_id, limit=5)` (max 20) for starter candidates.
 6. `get_leads_wait(list_id)` to block until the list settles (no searches, qualifier evals, or lead evals in progress). Default timeout 15 min — call again if it times out rather than treating it as fatal.
