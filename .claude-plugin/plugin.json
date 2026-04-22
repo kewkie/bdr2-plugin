@@ -1,7 +1,7 @@
 {
   "name": "bdr2",
-  "version": "0.1.1",
-  "description": "Connect Claude Code to BDR² and orchestrate lead-generation workflows — list management, lead discovery, ICQ qualification, enrichment, and email generation.",
+  "version": "0.1.2",
+  "description": "Connect Claude Code to BDR² — build lead lists, find and qualify leads against your ideal customer profile, enrich contacts, and draft outreach emails.",
   "author": {
     "name": "BDR²",
     "url": "https://bdr2.com"
