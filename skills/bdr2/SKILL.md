@@ -122,7 +122,7 @@ Ask the user about outcomes, then wire up the machinery behind the scenes. **Don
    - `create_qualifier(short_name, question, list_id=list_id)` for anything new (attaches it to the list in one call).
    - `set_icq(list_id, qualifiers=[{qualifier_id, desired_state: {undetermined, true, false}}])`. All three boolean keys are required; `unevaluated` is **not** valid.
 5. From "starter leads": `add_lead(list_id, company_url, ...)` per example. If none provided, `find_new_leads(list_id, limit=5)` (max 20) for starter candidates.
-6. `get_leads_wait(list_id)` to block until the list settles (no searches, qualifier evals, or lead evals in progress). Default timeout 15 min — call again if it times out rather than treating it as fatal.
+6. `get_leads_wait(list_id)` to block until the list settles (no searches, qualifier evals, or lead evals in progress). Blocks briefly (~20s) and may return `{status: "pending", leads: [...partial...], progress: {...}}` if things haven't settled yet — if so, call again to continue waiting. Partial leads are fine to narrate as progress, but the list isn't done until a call returns a plain leads array.
 
 You don't need every answer before starting — you can collect the target shape and starter leads, kick off a search while you ask about sender/message, etc. Use judgement about when you have enough to proceed.
 
