@@ -1,0 +1,15 @@
+interface:
+  display_name: "BDR2"
+  short_description: "Lead-generation workflows with BDR2 MCP"
+  default_prompt: "Use $bdr2 to run this lead-generation workflow in BDR2."
+
+policy:
+  allow_implicit_invocation: true
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "bdr2"
+      description: "BDR2 MCP server"
+      transport: "streamable_http"
+      url: "https://app.bdr2.com/api/mcp/"

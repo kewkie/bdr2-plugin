@@ -3,7 +3,7 @@
 Agent packaging for [BDR²](https://bdr2.com) workflows:
 
 - **Claude Code plugin** (`.claude-plugin/` + `skills/bdr2/SKILL.md`)
-- **Codex setup** (`.codex/config.toml` + `AGENTS.md`)
+- **Codex plugin + skill** (`.codex-plugin/plugin.json` + `.mcp.json` + `.agents/skills/bdr2/SKILL.md`)
 
 ## What you get
 
@@ -31,24 +31,24 @@ On first tool call, Claude Code will open a browser window for BDR² OAuth. Sign
 
 ## Install from GitHub (Codex)
 
-Codex uses MCP config + `AGENTS.md` (no marketplace command). To install into the current repo from GitHub in one shot:
+Use the Codex marketplace flow (recommended):
 
 ```
-curl -fsSL https://raw.githubusercontent.com/kewkie/bdr2-plugin/main/scripts/install-codex.sh | bash
+codex plugin marketplace add kewkie/bdr2-plugin
 ```
 
-The installer will:
-
-- add/update `.codex/config.toml` with the BDR2 MCP server
-- append/update a managed BDR2 section in `AGENTS.md`
-
-Then trust the project in Codex so project config is loaded:
+Then open Codex and install `bdr2` from the plugin browser:
 
 ```
-codex trust
+codex
+/plugins
 ```
 
-On first MCP use, complete the browser OAuth flow for BDR².
+On first use, authenticate MCP:
+
+```
+codex mcp login bdr2
+```
 
 ## What's in the box
 
@@ -56,17 +56,21 @@ On first MCP use, complete the browser OAuth flow for BDR².
 .claude-plugin/
 ├── plugin.json          plugin manifest — name, version, MCP server config
 └── marketplace.json     single-plugin marketplace (so this repo self-installs)
-.codex/
-└── config.toml          Codex MCP server config
-AGENTS.md                Codex workflow guidance
-scripts/
-└── install-codex.sh     one-shot Codex installer (from GitHub)
+.codex-plugin/
+└── plugin.json          Codex-native plugin manifest
+.mcp.json                MCP server config used by Codex plugin
+.agents/
+└── skills/
+    └── bdr2/
+        ├── SKILL.md     Codex bdr2 skill instructions
+        └── agents/
+            └── openai.yaml  skill metadata + MCP dependency hints
 skills/
 └── bdr2/
     └── SKILL.md         orchestration guide loaded on-demand
 ```
 
-The plugin manifest declares the MCP server inline. No local binary is shipped — the server runs at `app.bdr2.com` and is reached over Streamable HTTP.
+No local binary is shipped — the server runs at `app.bdr2.com` and is reached over Streamable HTTP.
 
 ## Developing
 
@@ -77,7 +81,7 @@ Point Claude Code at a local checkout to test changes without republishing:
 /plugin install bdr2@bdr2
 ```
 
-Edit `skills/bdr2/SKILL.md` and reload the skill (`/plugin reload bdr2` or restart Claude Code) to see changes.
+Edit `skills/bdr2/SKILL.md` (Claude) and `.agents/skills/bdr2/SKILL.md` (Codex) and reload clients (`/plugin reload bdr2` for Claude, restart Codex) to see changes.
 
 ## Updating the skill
 

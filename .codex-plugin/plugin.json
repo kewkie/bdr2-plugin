@@ -1,0 +1,13 @@
+{
+  "name": "bdr2",
+  "version": "0.1.4",
+  "description": "Connect Codex to BDR² workflows — build lead lists, qualify ICP fit, enrich contacts, and draft outreach emails.",
+  "author": {
+    "name": "BDR²",
+    "url": "https://bdr2.com"
+  },
+  "homepage": "https://bdr2.com",
+  "license": "MIT",
+  "keywords": ["bdr2", "sales", "lead-generation", "outreach", "mcp"],
+  "mcpServers": "./.mcp.json"
+}
