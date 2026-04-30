@@ -60,6 +60,8 @@ codex mcp login bdr2
 └── plugin.json          Codex-native plugin manifest
 .mcp.json                MCP server config used by Codex plugin
 .agents/
+├── plugins/
+│   └── marketplace.json Codex marketplace catalog
 └── skills/
     └── bdr2/
         ├── SKILL.md     Codex bdr2 skill instructions
