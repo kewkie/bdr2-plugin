@@ -7,8 +7,9 @@
     {
       "name": "bdr2",
       "source": {
-        "source": "local",
-        "path": "./"
+        "source": "url",
+        "url": "https://github.com/kewkie/bdr2-plugin.git",
+        "ref": "main"
       },
       "description": "BDR2 lead-generation workflows for Codex. Bundles the BDR2 MCP server with a reusable skill for list building, qualification, enrichment, and outreach.",
       "category": "Productivity",
