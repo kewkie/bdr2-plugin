@@ -1,6 +1,6 @@
 {
   "name": "bdr2",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Connect Codex to BDR² workflows — build lead lists, qualify ICP fit, enrich contacts, and draft outreach emails.",
   "author": {
     "name": "BDR²",
